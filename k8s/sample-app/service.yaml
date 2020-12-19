@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: onion-sample-app-svc
+  namespace: sample-ns
+  labels:
+    app: onion-sample-app
+spec:
+  ports:
+  - port: 5432
+    name: http-swagger
+  - port: 12345
+    name: grpc-onion
+  selector:
+    app: onion-sample-app-svc

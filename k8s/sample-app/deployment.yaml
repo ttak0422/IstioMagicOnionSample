@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: onion-sample-app-v1
+  namespace: sample-ns
+  labels:
+    app: onion-sample-app
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: onion-sample-app
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: onion-sample-app
+        version: v1
+    spec:
+      containers:
+      - name: onion
+        image: tak0422/onion-sample-app:0.1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5432
+        - containerPort: 12345
+        resources:
+          limits:
+            cpu: "1000m"
+            memory: "512Mi"
+          requests:
+            cpu: "500m"
+            memory: "256Mi"
