@@ -1,0 +1,22 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: onion-sample-app-gw
+  namespace: sample-ns
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 5432
+      name: http-swagger
+      protocol: HTTP
+    hosts:
+    - "*"
+  - port:
+      number: 12345
+      name: grpc-onion
+      protocol: GRPC
+    hosts:
+      - "*"

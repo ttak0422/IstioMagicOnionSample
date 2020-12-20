@@ -11,7 +11,7 @@ class DockerBuildSettingsParameters
 }
 Setup<DockerBuildSettingsParameters>(ctx => new DockerBuildSettingsParameters()
     {
-        Tag = ctx.Argument("tag", "sample-onion-app:1.0")
+        Tag = ctx.Argument("tag", "onion-sample-app:1.0")
     });
 
 Task("Restore")

@@ -1,0 +1,22 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: onion-sample-app
+  namespace: sample-ns
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - onion-sample-app-gw
+  http:
+  - match:
+    - port: 5432
+    route:
+    - destination:
+        host: onion-svc.sample-ns.svc.cluster.local
+  - match:
+    - port: 12345
+    route:
+    - destination:
+        host: onion-svc.sample-ns.svc.cluster.local
