@@ -4,8 +4,6 @@ kind: Service
 metadata:
   name: onion-sample-app-svc
   namespace: sample-ns
-  labels:
-    app: onion-sample-app
 spec:
   ports:
   - port: 5432
@@ -13,4 +11,4 @@ spec:
   - port: 12345
     name: grpc-onion
   selector:
-    app: onion-sample-app-svc
+    app: onion-sample-app
